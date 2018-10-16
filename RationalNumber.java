@@ -1,52 +1,100 @@
 public class RationalNumber extends RealNumber{
-  public int numerator, denominator;
-  public RationalNumber(int a, int b) {
-    numerator = a;
-    denominator = b;
+  private int numerator, denominator;
+//in the constructor, disable any zeros in the denominator (make it 0/1)
+  public RationalNumber(int nume, int deno){
+    super(0);//this value is ignored!
   }
 
-  public RationalNumber() {
-    numerator = 1;
-    denominator = 2;
+  public double getValue(){
+    return 0;//???
   }
 
-  public double getNumerator() {
+  /**
+  *return the numerator
+  */
+  public int getNumerator(){
     return numerator;
   }
-
-  public double getDenominator() {
+  /**
+  *@return the denominator
+  */
+  public int getDenominator(){
     return denominator;
   }
-
-  public RationalNumber add (RationalNumber B){
-    return new RationalNumber(0,10);
+  /**
+  *return a new RationalNumber that has the same numerator
+  *and denominator as this RationalNumber but reversed.
+  */
+  public RationalNumber reciprocal(){
+    return new RationalNumber(this.deno, this.nume);
+  }
+  /**
+  *return true when the RationalNumbers have the same numerators and denominators, false otherwise.
+  */
+  public boolean equals(RationalNumber other){
+    return false;
   }
 
-  public RationalNumber subtract (RationalNumber B){
-    return new RationalNumber(0,10);
+
+  /**
+  *@return the value expressed as "3/4" or "8/3"
+  */
+  public String toString(){
+    return "0";
   }
 
-  public RationalNumber multiply (RationalNumber B){
-    return new RationalNumber(0,10);
+
+
+  /**Calculate the GCD of two integers.
+  *param a the first integers
+  *param b the second integer
+  *return the value of the GCD
+  */
+  private static int gcd(int a, int b){
+    /*use euclids method or a better one*/
+    return 0;
   }
 
-  public RationalNumber divide (RationalNumber B){
-    return new RationalNumber(0,10);
+
+
+  /**
+  *Divide the numerator and denominator by the GCD
+  *This must be used to maintain that all RationalNumbers are
+  *reduced after construction.
+  */
+  private void reduce(){
+
   }
 
-  public RationalNumber compareTo(RationalNumber B) {
-    return new RationalNumber(0,10);
+
+
+  /******************Operations!!!!****************/
+
+
+  /**
+  *Return a new RationalNumber that is the product of this and the other
+  */
+  public RationalNumber multiply(RationalNumber other){
+    return null;
   }
 
-  public RationalNumber reduce (RationalNumber B){
-    return new RationalNumber(0,10);
+  /**
+  *Return a new RationalNumber that is the this divided by the other
+  */
+  public RationalNumber divide(RationalNumber other){
+    return null;
   }
 
-  public double toDouble() {
-    return numerator / denominator + numerator % denominator;
+  /**
+  *Return a new RationalNumber that is the sum of this and the other
+  */
+  public RationalNumber add(RationalNumber other){
+    return null;
   }
-
-  public String toString() {
-    return numerator + "/" + denominator;
+  /**
+  *Return a new RationalNumber that this minus the other
+  */
+  public RationalNumber subtract(RationalNumber other){
+    return null;
   }
 }
