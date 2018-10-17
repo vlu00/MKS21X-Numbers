@@ -2,15 +2,16 @@ public class RationalNumber extends RealNumber{
   private int numerator, denominator;
 
   public RationalNumber(int nume, int deno){
-    super(nume * 1.0 / deno + nume % deno);
+    super(0);
     if (deno == 0) {
       numerator = 0;
       denominator = 1;
     }
     else {
-      nume = numerator;
-      deno = denominator;
+      numerator = nume;
+      denominator = deno;
     }
+    reduce();
   }
 
   public double getValue(){
@@ -40,6 +41,12 @@ public class RationalNumber extends RealNumber{
   //}
 
   public String toString(){
+    if (denominator == 1) {
+      return "" + getNumerator();
+    }
+    if (numerator == 0) {
+      return "" + 0;
+    }
     return getNumerator() + "/" + getDenominator();
   }
 
@@ -55,20 +62,12 @@ public class RationalNumber extends RealNumber{
     numerator = numerator / g;
     denominator = denominator / g;
   }
-
-
-
-  /******************Operations!!!!****************/
-
-
-  /**
-  *Return a new RationalNumber that is the product of this and the other
-  */
+/*
   public RationalNumber multiply(RationalNumber other){
     double nume;
     double deno;
-    nume = this.numerator * other.numerator;
-    deno = this.denominator * other.denominator;
+    nume = (double)this.numerator * other.numerator;
+    deno = (double)this.denominator * other.denominator;
     RationalNumber A = new RationalNumber(nume, deno);
     A.reduce();
     return A;
@@ -80,10 +79,5 @@ public class RationalNumber extends RealNumber{
 
   public RationalNumber add(RationalNumber other){
   }
-  /**
-  *Return a new RationalNumber that this minus the other
-  */
-  public RationalNumber subtract(RationalNumber other){
-    return null;
-  }
+*/
 }

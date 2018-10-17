@@ -12,15 +12,17 @@ public class Driver {
     System.out.println(A.multiply(B));
 
     RationalNumber a = new RationalNumber(1, 2);
-    RationalNumber b = new RationalNumber(1, 4);
+    RationalNumber b = new RationalNumber(2, 4);
     RationalNumber c = new RationalNumber(1, 5);
 
     System.out.println(a);
     System.out.println(b);
-    System.out.println(a.add(b));
-    System.out.println(a.subtract(b));
-    System.out.println(a.divide(c));
+    System.out.println(a.getNumerator());
+    System.out.println(a.getDenominator());
+    System.out.println(a.reciprocal());
+    System.out.println(a.gcd(2, 4));
     System.out.println(a.multiply(b));
+
 
   }
 }
