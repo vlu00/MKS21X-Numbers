@@ -1,69 +1,59 @@
 public class RationalNumber extends RealNumber{
   private int numerator, denominator;
-//in the constructor, disable any zeros in the denominator (make it 0/1)
+
   public RationalNumber(int nume, int deno){
-    super(0);//this value is ignored!
+    super(nume * 1.0 / deno + nume % deno);
+    if (deno == 0) {
+      numerator = 0;
+      denominator = 1;
+    }
+    else {
+      nume = numerator;
+      deno = denominator;
+    }
   }
 
   public double getValue(){
-    return 0;//???
+    return numerator / denominator + numerator % denominator;
   }
 
-  /**
-  *return the numerator
-  */
   public int getNumerator(){
     return numerator;
   }
-  /**
-  *@return the denominator
-  */
+
   public int getDenominator(){
     return denominator;
   }
-  /**
-  *return a new RationalNumber that has the same numerator
-  *and denominator as this RationalNumber but reversed.
-  */
+
   public RationalNumber reciprocal(){
-    return new RationalNumber(this.deno, this.nume);
-  }
-  /**
-  *return true when the RationalNumbers have the same numerators and denominators, false otherwise.
-  */
-  public boolean equals(RationalNumber other){
-    return false;
+    if (numerator == 0) {
+      return new RationalNumber(0, 1);
+    }
+    else {
+      return new RationalNumber(this.denominator, this.numerator);
+    }
   }
 
+  //public boolean equals(RationalNumber other){
+  //  if
+  //  return false;
+  //}
 
-  /**
-  *@return the value expressed as "3/4" or "8/3"
-  */
   public String toString(){
-    return "0";
+    return getNumerator() + "/" + getDenominator();
   }
 
-
-
-  /**Calculate the GCD of two integers.
-  *param a the first integers
-  *param b the second integer
-  *return the value of the GCD
-  */
-  private static int gcd(int a, int b){
-    /*use euclids method or a better one*/
-    return 0;
+  public static int gcd(int a, int b){
+    if (b == 0) {
+      return a;
+    }
+    return gcd(b, a % b);
   }
 
-
-
-  /**
-  *Divide the numerator and denominator by the GCD
-  *This must be used to maintain that all RationalNumbers are
-  *reduced after construction.
-  */
   private void reduce(){
-
+    int g = gcd(numerator, denominator);
+    numerator = numerator / g;
+    denominator = denominator / g;
   }
 
 
@@ -75,21 +65,20 @@ public class RationalNumber extends RealNumber{
   *Return a new RationalNumber that is the product of this and the other
   */
   public RationalNumber multiply(RationalNumber other){
-    return null;
+    double nume;
+    double deno;
+    nume = this.numerator * other.numerator;
+    deno = this.denominator * other.denominator;
+    RationalNumber A = new RationalNumber(nume, deno);
+    A.reduce();
+    return A;
   }
 
-  /**
-  *Return a new RationalNumber that is the this divided by the other
-  */
   public RationalNumber divide(RationalNumber other){
-    return null;
+    return this.nultiply(reciprocal(other));
   }
 
-  /**
-  *Return a new RationalNumber that is the sum of this and the other
-  */
   public RationalNumber add(RationalNumber other){
-    return null;
   }
   /**
   *Return a new RationalNumber that this minus the other

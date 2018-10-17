@@ -10,5 +10,17 @@ public class Driver {
     System.out.println(A.subtract(B));
     System.out.println(A.divide(C));
     System.out.println(A.multiply(B));
+
+    RationalNumber a = new RationalNumber(1, 2);
+    RationalNumber b = new RationalNumber(1, 4);
+    RationalNumber c = new RationalNumber(1, 5);
+
+    System.out.println(a);
+    System.out.println(b);
+    System.out.println(a.add(b));
+    System.out.println(a.subtract(b));
+    System.out.println(a.divide(c));
+    System.out.println(a.multiply(b));
+
   }
 }
