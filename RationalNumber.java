@@ -2,12 +2,12 @@ public class RationalNumber extends RealNumber{
   private int numerator, denominator;
 
   public RationalNumber(int nume, int deno){
-    super(0);
-    if (deno < 0 || (nume < 0 && deno < 0)) {
-      numerator = nume * -1;
-      denominator = deno * -1;
+    super((double)nume/deno);
+    if (deno < 0) {
+      numerator = -nume;
+      denominator = -deno;
     }
-    if (deno == 0) {
+    else if (deno == 0) {
       numerator = 0;
       denominator = 1;
     }
@@ -19,7 +19,7 @@ public class RationalNumber extends RealNumber{
   }
 
   public double getValue(){
-    return numerator / denominator + numerator % denominator;
+    return numerator / (double)denominator;
   }
 
   public int getNumerator(){
@@ -65,7 +65,7 @@ public class RationalNumber extends RealNumber{
   }
 
   private void reduce(){
-    int g = gcd(numerator, denominator);
+    int g = gcd(Math.abs(numerator), Math.abs(denominator));
     numerator = numerator / g;
     denominator = denominator / g;
   }
